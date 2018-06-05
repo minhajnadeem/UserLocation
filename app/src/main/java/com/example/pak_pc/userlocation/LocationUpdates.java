@@ -23,11 +23,17 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResponse;
 import com.google.android.gms.location.SettingsClient;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
-public class LocationUpdates extends AppCompatActivity {
+public class LocationUpdates extends AppCompatActivity implements OnMapReadyCallback {
 
     private final String TAG = "LocationUpdates";
     private double latitude,longitude;
@@ -37,6 +43,7 @@ public class LocationUpdates extends AppCompatActivity {
     private Activity mContext;
     private LocationRequest mLocationRequest;
     private LocationCallback mLocationCallback;
+    private GoogleMap mMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +51,11 @@ public class LocationUpdates extends AppCompatActivity {
         setContentView(R.layout.activity_location_updates);
 
         mContext = this;
+
+        //setup map
+        SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        supportMapFragment.getMapAsync(this);
+
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         mLocationCallback = new LocationCallback(){
             @Override
@@ -53,6 +65,7 @@ public class LocationUpdates extends AppCompatActivity {
                     Location location = locationResult.getLastLocation();
                     latitude = location.getLatitude();
                     longitude = location.getLongitude();
+                    setPinOnMap();
                     Toast.makeText(mContext, latitude + "-" + longitude, Toast.LENGTH_SHORT).show();
                 }
             }
@@ -118,6 +131,19 @@ public class LocationUpdates extends AppCompatActivity {
         });
     }
 
+    /**
+     * set pin on map
+     */
+    private void setPinOnMap() {
+        if (mMap == null)
+            return;
+        // Add a marker in Sydney, Australia, and move the camera.
+        mMap.clear();
+        LatLng latLng = new LatLng(latitude, longitude);
+        mMap.addMarker(new MarkerOptions().position(latLng));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+    }
+
     @SuppressLint("MissingPermission")
     private void startLocationUpdates(){
         mFusedLocationProviderClient.requestLocationUpdates(mLocationRequest, mLocationCallback, null);
@@ -145,6 +171,18 @@ public class LocationUpdates extends AppCompatActivity {
             }else {
                 Toast.makeText(this, "location not set by GPS", Toast.LENGTH_SHORT).show();
             }
+        }
+    }
+
+    /**
+     * google map ready callback
+     * @param googleMap
+     */
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        if (mMap != null){
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
         }
     }
 }

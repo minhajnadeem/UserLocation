@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">User Location</string>
+
+    <string name="google_map_api_key">AIzaSyDOcBokU-Pht2WZ2s_uf7VSInTGkw5NMng</string>
 </resources>

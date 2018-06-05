@@ -96,7 +96,7 @@ public class LocationAddress extends AppCompatActivity {
     }
 
     /**
-     * intent service result receiver
+     * FetchAddressIntentService result receiver
      */
     class AddressResultReceiver extends ResultReceiver {
         public AddressResultReceiver(Handler handler) {
