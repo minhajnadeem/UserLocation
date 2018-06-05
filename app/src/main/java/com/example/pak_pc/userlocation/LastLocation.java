@@ -1,14 +1,17 @@
 package com.example.pak_pc.userlocation;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Point;
 import android.location.Location;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -75,6 +78,19 @@ public class LastLocation extends AppCompatActivity {
                 Toast.makeText(this, "permissions not granted", Toast.LENGTH_SHORT).show();
             }
         }
+    }
 
+    /**
+     * launch google maps application
+     * @param view
+     */
+    public void launchGoogleMaps(View view) {
+        Uri gmmIntentUri = Uri.parse("geo:"+latitude+","+longitude+"?q="+Uri.encode(latitude+","+longitude));
+        //Uri gmmIntentUri = Uri.parse("geo:37.7749,-122.4194?q="+Uri.parse("37.7749,-122.4194"));
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        if (mapIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(mapIntent);
+        }
     }
 }
