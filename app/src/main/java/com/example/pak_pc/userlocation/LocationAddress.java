@@ -42,7 +42,7 @@ public class LocationAddress extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_address);
 
-        mTextView = findViewById(R.id.textView);
+        mTextView = findViewById(R.id.textView2);
 
         mActivity = this;
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
