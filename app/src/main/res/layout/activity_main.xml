@@ -45,6 +45,13 @@
                 android:text="location address"
                 android:onClick="locationAddress"/>
 
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="place picker"
+                android:onClick="placePicker"/>
+
         </LinearLayout>
     </ScrollView>
 

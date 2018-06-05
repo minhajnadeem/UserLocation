@@ -32,4 +32,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,LocationAddress.class);
         startActivity(intent);
     }
+
+    public void placePicker(View view) {
+        Intent intent = new Intent(this,PlacePickerActivity.class);
+        startActivity(intent);
+    }
 }

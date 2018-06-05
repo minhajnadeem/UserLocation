@@ -22,19 +22,20 @@
         <activity android:name=".LastLocation" />
         <activity android:name=".LocationSettings" />
         <activity android:name=".LocationUpdates" />
-        <activity android:name=".LocationAddress"></activity>
+        <activity android:name=".LocationAddress" />
 
-        <service android:name=".services.FetchAddressIntentService"
-            android:exported="false"/>
+        <service
+            android:name=".services.FetchAddressIntentService"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_map_api_key"/>
-
+            android:value="@string/google_map_api_key" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
+        <activity android:name=".PlacePickerActivity"></activity>
     </application>
 
 </manifest>
