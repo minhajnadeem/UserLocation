@@ -52,7 +52,29 @@
                 android:text="place picker"
                 android:onClick="placePicker"/>
 
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="current location"
+                android:onClick="currentLocation"/>
+
+            <Button
+                android:id="@+id/button7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Auto complete"
+                android:onClick="autoComplete"/>
+
+            <Button
+                android:id="@+id/button8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="place prediction"
+                android:onClick="placePrediction"/>
+
         </LinearLayout>
+
     </ScrollView>
 
 </RelativeLayout>

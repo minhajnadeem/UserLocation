@@ -35,7 +35,11 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".PlacePickerActivity"></activity>
+        <activity android:name=".PlacePickerActivity" />
+        <activity android:name=".CurrentLocation" />
+        <activity android:name=".MapActivity" />
+        <activity android:name=".AutoCompleteActivity" />
+        <activity android:name=".PlacePredictionActivity"></activity>
     </application>
 
 </manifest>

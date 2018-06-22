@@ -37,4 +37,19 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,PlacePickerActivity.class);
         startActivity(intent);
     }
+
+    public void currentLocation(View view) {
+        Intent intent = new Intent(this,CurrentLocation.class);
+        startActivity(intent);
+    }
+
+    public void autoComplete(View view) {
+        Intent intent = new Intent(this,AutoCompleteActivity.class);
+        startActivity(intent);
+    }
+
+    public void placePrediction(View view) {
+        Intent intent = new Intent(this,PlacePredictionActivity.class);
+        startActivity(intent);
+    }
 }

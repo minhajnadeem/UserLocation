@@ -141,7 +141,7 @@ public class LocationUpdates extends AppCompatActivity implements OnMapReadyCall
         mMap.clear();
         LatLng latLng = new LatLng(latitude, longitude);
         mMap.addMarker(new MarkerOptions().position(latLng));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
     }
 
     @SuppressLint("MissingPermission")

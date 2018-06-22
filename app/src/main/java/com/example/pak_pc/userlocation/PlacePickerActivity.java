@@ -59,22 +59,28 @@ public class PlacePickerActivity extends AppCompatActivity {
         if (requestCode == RC_PLACE_PICKER){
             if (resultCode == RESULT_OK){
                 Place place = PlacePicker.getPlace(this,data);
-                setUI(place);
+                updateUI(place);
             }else {
                 Toast.makeText(this, "No place selected", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
-    private void setUI(Place place) {
+    private void updateUI(Place place) {
         mTextView.setText(
                 place.getAddress() +"\n"
                         +place.getLocale() + "\n"
                         +place.getName() + "\n"
                         +place.getPhoneNumber() + "\n"
-                        +place.getRating() + "\n");
+                        +place.getRating() + "\n"
+                        +place.getLatLng().latitude + "\n"
+                        +place.getLatLng().longitude + "\n");
     }
 
+    /**
+     * start place picker activity
+     * @param view
+     */
     public void launchPlacePicker(View view) {
         startPlacePicker();
     }
